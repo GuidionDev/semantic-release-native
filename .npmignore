@@ -1,8 +1,10 @@
 src/
-node_modules
+node_modules/
 config
 jest.config.js
 package.lock.json
 tsconfig.json
 __tests__
 .travis.yml
+coverage/
+typings.d.ts

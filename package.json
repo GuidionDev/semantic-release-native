@@ -8,10 +8,11 @@
     "build": "npx rimraf dist && npx tsc && npm run copy",
     "semantic-release": "semantic-release"
   },
+  "private": false,
   "main": "dist/index",
   "types": "./dist/index.d.ts",
-  "author": "",
-  "license": "ISC",
+  "author": "Guidion",
+  "license": "MIT",
   "devDependencies": {
     "@types/jest": "^23.3.1",
     "@types/node": "^10.5.2",
