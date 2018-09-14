@@ -1,0 +1,27 @@
+{
+  "name": "@gdn/semantic-release-native",
+  "version": "1.0.0",
+  "description": "plugin for semantic release that automatically updates the android and ios versions",
+  "scripts": {
+    "test": "npm run build && npx jest --coverage",
+    "copy": "npx copyfiles -u 1 src/__tests__/*/build.gradle dist/",
+    "build": "npx rimraf dist && npx tsc && npm run copy",
+    "semantic-release": "semantic-release"
+  },
+  "main": "dist/index",
+  "types": "./dist/index.d.ts",
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^23.3.1",
+    "@types/node": "^10.5.2",
+    "@types/semver": "^5.5.0",
+    "jest": "^23.4.2",
+    "ts-jest": "^23.0.1",
+    "typescript": "^2.9.2"
+  },
+  "dependencies": {
+    "@semantic-release/error": "^2.2.0",
+    "semver": "^5.5.1"
+  }
+}
