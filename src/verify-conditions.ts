@@ -7,7 +7,7 @@ import * as SemanticReleaseError from '@semantic-release/error';
  * This checks if all Expo manifests are readable.
  */
 const verifyConditions: SemanticMethod = async (config, context) => {
-  // TODO check if this commit should update version?
+  // TODO check if configpath / defaultpath is valid?
 };
 
 export default verifyConditions;

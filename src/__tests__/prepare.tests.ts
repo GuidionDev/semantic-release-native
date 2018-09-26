@@ -1,6 +1,7 @@
-import { prepare } from "../../src";
-import { Context } from "../interfaces";
+import { prepare } from '../../src';
+import { Context } from '../interfaces';
 import fs from 'fs';
+import plist from 'plist';
 
 const context: Context = {
   logger: {
@@ -10,7 +11,7 @@ const context: Context = {
   nextRelease: { version: '2.2.3', gitHead: 'bla', gitTag: '', notes: 'super cool release!' }
 };
 
-const config = { androidPath: 'dist/__tests__/fixtures/build.gradle' };
+const config = { androidPath: 'dist/__tests__/fixtures/build.gradle', iosPath: 'dist/__tests__/fixtures' };
 describe('prepare', () => {
   test('should correctly set the versions in gradle', (done) => {
     prepare(config, context).then((result: string) => {
@@ -18,7 +19,12 @@ describe('prepare', () => {
         if (err) done(err);
         expect(data.indexOf('versionCode 20203') > -1);
         expect(data.indexOf('versionName "2.2.3"') > -1);
-        done();
+        fs.readFile(config.iosPath + '/ios_project/info.plist', 'utf8', (err, data) => {
+          if (err) done(err);
+          const plistContents = plist.parse(data);
+          plistContents.CFBundleVersion === '2.2.3';
+          done();
+        });
       });
     });
   });
@@ -29,7 +35,12 @@ describe('prepare', () => {
         if (err) done(err);
         expect(data.indexOf('versionCode 31000') > -1);
         expect(data.indexOf('versionName "3.10.0"') > -1);
-        done();
+        fs.readFile(config.iosPath + '/ios_project/info.plist', 'utf8', (err, data) => {
+          if (err) done(err);
+          const plistContents = plist.parse(data);
+          plistContents.CFBundleVersion === '3.10.0';
+          done();
+        });
       });
     });
   });
