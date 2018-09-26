@@ -8,3 +8,8 @@ declare module '@semantic-release/error' {
     )
   }
 }
+
+declare module 'plist' {
+  const plist: any;
+  export default plist;
+}
