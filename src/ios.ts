@@ -19,5 +19,6 @@ export const updatePlist = async (path: string, newVersion: string) => {
 const editPlistVersion = (file: string, newVersion: string) => {
   const plistContents = plist.parse(file);
   plistContents.CFBundleVersion = newVersion;
+  plistContents.CFBundleShortVersionString = newVersion;
   return plist.build(plistContents);
 }

@@ -23,6 +23,7 @@ describe('prepare', () => {
           if (err) done(err);
           const plistContents = plist.parse(data);
           plistContents.CFBundleVersion === '2.2.3';
+          plistContents.CFBundleShortVersionString === '2.2.3';
           done();
         });
       });
@@ -39,6 +40,7 @@ describe('prepare', () => {
           if (err) done(err);
           const plistContents = plist.parse(data);
           plistContents.CFBundleVersion === '3.10.0';
+          plistContents.CFBundleShortVersionString === '3.10.0';
           done();
         });
       });
