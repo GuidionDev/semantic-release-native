@@ -8,7 +8,7 @@ export const updatePlist = async (path: string, newVersion: string) => {
   const dirs = files.map(f => join(path, f)).filter(baseFile => statSync(baseFile).isDirectory());
 
   return dirs.reduce((prev: Promise<any>, dirPath) => {
-    const plistPath = join(dirPath, 'info.plist');
+    const plistPath = join(dirPath, 'Info.plist');
     return prev
       .then(() => readFile(plistPath))
       .then(file => writeFile(plistPath, editPlistVersion(file, newVersion)))
