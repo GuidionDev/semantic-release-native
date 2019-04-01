@@ -22,8 +22,8 @@ describe('prepare', () => {
         fs.readFile(config.iosPath + '/ios_project/info.plist', 'utf8', (err, data) => {
           if (err) done(err);
           const plistContents = plist.parse(data);
-          plistContents.CFBundleVersion === '2.2.3';
-          plistContents.CFBundleShortVersionString === '2.2.3';
+          expect(plistContents.CFBundleVersion === '2.2.3');
+          expect(plistContents.CFBundleShortVersionString === '2.2.3');
           done();
         });
       });
@@ -39,8 +39,8 @@ describe('prepare', () => {
         fs.readFile(config.iosPath + '/ios_project/info.plist', 'utf8', (err, data) => {
           if (err) done(err);
           const plistContents = plist.parse(data);
-          plistContents.CFBundleVersion === '3.10.0';
-          plistContents.CFBundleShortVersionString === '3.10.0';
+          expect(plistContents.CFBundleVersion === '3.10.0');
+          expect(plistContents.CFBundleShortVersionString === '3.10.0');
           done();
         });
       });
