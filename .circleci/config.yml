@@ -21,4 +21,5 @@ jobs:
 workflows:
     build:
       jobs:
-        - build
+        - build:
+            context: semantic-release-npm
