@@ -16,3 +16,4 @@ By default for android semantic-release-native will attempt to look for your bui
 
 For ios it takes the '/ios/' folder and attempts to update all subdirectories with plist files to the new version. If your plist files are not below a '/ios/' folder you can pass an alternative folder to iosPath in the semantic release configuration.
 
+To utilise the library for only one mobile framework use the propert 'iosOrAndroid' with either, 'ios', 'android' or 'both'. Default action is both.
