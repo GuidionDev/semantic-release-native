@@ -15,6 +15,7 @@ export interface GlobalConfig {
 export interface Config {
   androidPath?: string;
   iosPath?: string;
+  iosOrAndroid?: string;
 }
 
 export interface LastRelease {
