@@ -21,5 +21,7 @@ module.exports = {
     "!**/vendor/**"
   ],
   "coverageReporters": ["json-summary"],
-  "testURL": "http://localhost/"
+  testEnvironmentOptions: {
+    url: 'http://localhost/'
+  }
 }
