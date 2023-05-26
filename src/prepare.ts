@@ -12,9 +12,17 @@ import { updatePlist } from './ios';
 const prepare: SemanticMethod = (config, context) => {
   const androidPath = config.androidPath || './android/app/build.gradle';
   const iosPath = config.iosPath || './ios';
-  const androidWork = updateGradleVersion(androidPath, context.nextRelease!.version);
+  const iosOrAndroid = config.iosOrAndroid || 'both';
+  let androidWork, iosWork;
 
-  const iosWork = updatePlist(iosPath, context.nextRelease!.version);
+  if (iosOrAndroid == 'both' || iosOrAndroid == 'android')
+  {
+    androidWork = updateGradleVersion(androidPath, context.nextRelease!.version);
+  }
+  if (iosOrAndroid == 'both' || iosOrAndroid == 'ios')
+  {
+    iosWork = updatePlist(iosPath, context.nextRelease!.version);
+  }
 
   return Promise.all([androidWork, iosWork])
     .then(() => {
