@@ -19,13 +19,14 @@ For ios it takes the '/ios/' folder and attempts to update all subdirectories wi
 
 ## Fastlane
 
-If you want to generate release notes for your fastlane, pass isFastlane boolean as following,
+If you want to generate release notes for your fastlane, pass isFastlane boolean as following, and locales that you want it to generate under.
 
 ```json
 "prepare": [
   {
     "path": "@gdn/semantic-release-native"`,
-    "isFastlane": true
+    "isFastlane": true,
+    "fastlaneReleaseNoteLanguages": ["en-US", "nl-NL"]
   }
 ]
 ```

@@ -19,9 +19,9 @@ const prepare: SemanticMethod = async (config, context) => {
 
   const promises = [androidWork, iosWork];
 
-  if (config.isFastlane) {
-    promises.push(writeNotesToFastlane(iosPath, context.nextRelease!.notes, context.logger.log));
-    promises.push(writeNotesToFastlane(androidPath, context.nextRelease!.notes, context.logger.log));
+  if (config.isFastlane && config.fastlaneReleaseNoteLanguages) {
+    promises.push(writeNotesToFastlane(iosPath, config.fastlaneReleaseNoteLanguages, context.nextRelease!.notes, context.logger.log));
+    promises.push(writeNotesToFastlane(androidPath, config.fastlaneReleaseNoteLanguages, context.nextRelease!.notes, context.logger.log));
   }
 
   return Promise.all(promises).then(() => {
