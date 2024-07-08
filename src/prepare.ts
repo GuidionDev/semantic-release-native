@@ -32,9 +32,7 @@ const prepare: SemanticMethod = async (config, context) => {
       'EWRITEVERSION',
       error,
     );
-  }).finally(() => {
-    throw new SemanticReleaseError('SEMANTIC SCREAM', 'ESEMANTICSCREAM', 'SEMANTIC SCREAM');
-  });;
+  });
 };
 
 
