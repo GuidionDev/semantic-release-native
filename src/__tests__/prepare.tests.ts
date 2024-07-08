@@ -11,11 +11,11 @@ const context: Context = {
   nextRelease: { version: '2.2.3', gitHead: 'bla', gitTag: '', notes: 'super cool release!' }
 };
 
-const config = { androidPath: 'dist/__tests__/fixtures/build.gradle', iosPath: 'dist/__tests__/fixtures' };
+const config = { androidPath: 'dist/__tests__/fixtures/android_project', iosPath: 'dist/__tests__/fixtures' };
 describe('prepare', () => {
   test('should correctly set the versions in gradle', (done) => {
     prepare(config, context).then((result: string) => {
-      fs.readFile(config.androidPath, 'utf8', (err, data) => {
+      fs.readFile(config.androidPath + '/app/build.gradle', 'utf8', (err, data) => {
         if (err) done(err);
         expect(data.indexOf('versionCode 20203') > -1);
         expect(data.indexOf('versionName "2.2.3"') > -1);
@@ -32,7 +32,7 @@ describe('prepare', () => {
   test('should correctly set the versions in gradle again', (done) => {
     context.nextRelease!.version = '3.10.0';
     prepare(config, context).then((result: string) => {
-      fs.readFile(config.androidPath, 'utf8', (err, data) => {
+      fs.readFile(config.androidPath + '/app/build.gradle', 'utf8', (err, data) => {
         if (err) done(err);
         expect(data.indexOf('versionCode 31000') > -1);
         expect(data.indexOf('versionName "3.10.0"') > -1);
