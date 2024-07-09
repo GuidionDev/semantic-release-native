@@ -4,7 +4,7 @@
   "description": "plugin for semantic release that automatically updates the android and ios versions",
   "scripts": {
     "test": "npm run build && npx jest --coverage",
-    "copy": "npx copyfiles -u 1 src/__tests__/*/build.gradle src/__tests__/**/info.plist dist/",
+    "copy": "npx copyfiles -u 1 src/__tests__/**/build.gradle src/__tests__/**/info.plist dist/",
     "build": "npx rimraf dist && npx tsc && npm run copy",
     "semantic-release": "semantic-release"
   },

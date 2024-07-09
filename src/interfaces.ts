@@ -15,6 +15,8 @@ export interface GlobalConfig {
 export interface Config {
   androidPath?: string;
   iosPath?: string;
+  isFastlane?: boolean;
+  fastlaneReleaseNoteLanguages?: string[];
 }
 
 export interface LastRelease {
